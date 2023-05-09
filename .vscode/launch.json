@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - komga",
+            "request": "launch",
+            "mainClass": "com.example.MyAppKt",
+            "projectName": "myapp",
+            "args": ""
+        }
+    ]
+}
