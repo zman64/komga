@@ -30,6 +30,8 @@ import kotlin.io.path.pathString
 import kotlin.io.path.readAttributes
 import kotlin.time.measureTime
 
+import org.gotson.komga.infrastructure.storage.StorageServiceFactory
+
 private val logger = KotlinLogging.logger {}
 
 @Service
@@ -37,6 +39,7 @@ class FileSystemScanner(
   private val komgaProperties: KomgaProperties,
   private val sidecarBookConsumers: List<SidecarBookConsumer>,
   private val sidecarSeriesConsumers: List<SidecarSeriesConsumer>,
+  private val storageServiceFactory: StorageServiceFactory,
 ) {
 
   private val supportedExtensions = listOf("cbz", "zip", "cbr", "rar", "pdf", "epub")
@@ -50,13 +53,15 @@ class FileSystemScanner(
 
   private val sidecarBookPrefilter = sidecarBookConsumers.flatMap { it.getSidecarBookPrefilter() }
 
-  fun scanRootFolder(root: Path, forceDirectoryModifiedTime: Boolean = false): ScanResult {
+  fun scanRootFolder(library: Library, forceDirectoryModifiedTime: Boolean = false): ScanResult {
+    val root = library.root.toPath()
+    val storageService = storageServiceFactory.getStorageService(library.storageType)
     logger.info { "Scanning folder: $root" }
     logger.info { "Supported extensions: $supportedExtensions" }
     logger.info { "Excluded patterns: ${komgaProperties.librariesScanDirectoryExclusions}" }
     logger.info { "Force directory modified time: $forceDirectoryModifiedTime" }
 
-    if (!(Files.isDirectory(root) && Files.isReadable(root)))
+    if (!(storageService.isDirectory(root) && storageService.isReadable(root)))
       throw DirectoryNotFoundException("Folder is not accessible: $root", "ERR_1016")
 
     val scannedSeries = mutableMapOf<Series, List<Book>>()

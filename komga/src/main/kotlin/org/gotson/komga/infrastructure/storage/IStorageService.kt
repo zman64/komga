@@ -11,5 +11,9 @@ interface IStorageService {
 
     fun writeFileContent(path: String, content: InputStream): Path
 
+    fun isDirectory(path: String): Boolean
+
+    fun isReadable(path: String): Boolean
+
     // Add any other necessary methods for storage operations
 }

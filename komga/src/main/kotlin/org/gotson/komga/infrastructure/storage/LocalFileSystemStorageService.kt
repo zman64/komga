@@ -18,4 +18,9 @@ class LocalFileSystemStorageService : IStorageService {
     }
 
     // Implement any other necessary methods for storage operations
+    override fun isDirectory(path: String): Boolean {
+    }
+
+    override fun isReadable(path: String): Boolean {
+    }
 }
