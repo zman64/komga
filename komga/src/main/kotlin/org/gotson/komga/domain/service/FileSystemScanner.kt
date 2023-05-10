@@ -5,6 +5,7 @@ import org.gotson.komga.domain.model.Book
 import org.gotson.komga.domain.model.DirectoryNotFoundException
 import org.gotson.komga.domain.model.ScanResult
 import org.gotson.komga.domain.model.Series
+import org.gotson.komga.domain.model.Library
 import org.gotson.komga.domain.model.Sidecar
 import org.gotson.komga.infrastructure.configuration.KomgaProperties
 import org.gotson.komga.infrastructure.sidecar.SidecarBookConsumer

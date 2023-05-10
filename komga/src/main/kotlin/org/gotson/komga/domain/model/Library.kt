@@ -33,6 +33,7 @@ data class Library(
   val unavailableDate: LocalDateTime? = null,
 
   val id: String = TsidCreator.getTsid256().toString(),
+  val storageType: String,
 
   override val createdDate: LocalDateTime = LocalDateTime.now(),
   override val lastModifiedDate: LocalDateTime = createdDate,

@@ -39,6 +39,8 @@ val kaptBenchmark by configurations.getting {
 }
 
 dependencies {
+  implementation("software.amazon.awssdk:s3:2.17.100")
+
   implementation(kotlin("stdlib-jdk8"))
   implementation(kotlin("reflect"))
 

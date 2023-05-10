@@ -24,4 +24,5 @@ data class LibraryUpdateDto(
   val hashFiles: Boolean,
   val hashPages: Boolean,
   val analyzeDimensions: Boolean,
+  @get:NotBlank val storageType: String,
 )

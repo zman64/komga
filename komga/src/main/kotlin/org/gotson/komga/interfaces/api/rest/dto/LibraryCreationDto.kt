@@ -24,4 +24,5 @@ data class LibraryCreationDto(
   val hashFiles: Boolean = true,
   val hashPages: Boolean = false,
   val analyzeDimensions: Boolean = true,
+  @get:NotBlank val storageType: String,
 )

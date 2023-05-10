@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.support.TransactionTemplate
 import java.io.FileNotFoundException
 import java.nio.file.Files
+import org.gotson.komga.infrastructure.storage.IStorageService
 
 private val logger = KotlinLogging.logger {}
 
